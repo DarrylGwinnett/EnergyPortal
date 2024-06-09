@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnergyPortalApi", "EnergyPortalApi\EnergyPortalApi.csproj", "{010BF1ED-9996-4512-8DED-9F3665681DE1}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnergyPortalApi.Data", "EnergyPortalApi.Data\EnergyPortalApi.Data.csproj", "{149ACD99-A989-4EF3-BBAD-C168F4923362}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnergyPortalApi.Domain", "EnergyPortalApi.Domain\EnergyPortalApi.Domain.csproj", "{D44E1129-C9C6-425E-B67F-3615D7E32051}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnergyPortalApi.Domain.Tests", "EnergyPortalApi.Domain.Tests\EnergyPortalApi.Domain.Tests.csproj", "{23F1821B-1CBA-4354-95B3-E47610DF7E6E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnergyPortalApi", "EnergyPortalApi.Controllers\EnergyPortalApi.csproj", "{34F0B749-934B-42DA-84AF-86288BDAB91A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{010BF1ED-9996-4512-8DED-9F3665681DE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{010BF1ED-9996-4512-8DED-9F3665681DE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{010BF1ED-9996-4512-8DED-9F3665681DE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{010BF1ED-9996-4512-8DED-9F3665681DE1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{149ACD99-A989-4EF3-BBAD-C168F4923362}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{149ACD99-A989-4EF3-BBAD-C168F4923362}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{149ACD99-A989-4EF3-BBAD-C168F4923362}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{23F1821B-1CBA-4354-95B3-E47610DF7E6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23F1821B-1CBA-4354-95B3-E47610DF7E6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23F1821B-1CBA-4354-95B3-E47610DF7E6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34F0B749-934B-42DA-84AF-86288BDAB91A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34F0B749-934B-42DA-84AF-86288BDAB91A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34F0B749-934B-42DA-84AF-86288BDAB91A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34F0B749-934B-42DA-84AF-86288BDAB91A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
