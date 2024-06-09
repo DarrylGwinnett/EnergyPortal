@@ -22,7 +22,7 @@ public class AccountController(IAccountsService accountsService) : ControllerBas
         {
             return Ok(await accountsService.GetAccountByIdAsync(accountId));
         }
-        catch (Exception ex) when (ex is KeyNotFoundException)
+        catch (Exception ex) when (ex is AccountNotFoundException)
         {
             return NotFound();
         }
