@@ -40,7 +40,6 @@
 <script setup>
 import { ref, computed } from 'vue';
 import axios from 'axios';
-import config from '../../config';
 
 const file = ref(null);
 const isLoading = ref(false);
@@ -76,7 +75,7 @@ const submitFile = async () => {
   failedCount.value = 0;
 
   try {
-    let response = await axios.post(config.baseUrl + '/api/meter-reading-uploads', formData, {
+    let response = await axios.post(process.env.VUE_APP_BASEURL + '/api/meter-reading-uploads', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },

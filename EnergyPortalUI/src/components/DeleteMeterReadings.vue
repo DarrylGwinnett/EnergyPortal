@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import config from '../../config';
 import axios from 'axios';
 
 export default {
@@ -23,7 +22,7 @@ export default {
     async deleteMeterReadings() {
       try {
         this.isLoading = true;
-        await axios.delete(config.baseUrl + '/api/meter-reading-uploads');
+        await axios.delete(process.env.VUE_APP_BASEURL + '/api/meter-reading-uploads');
         this.successMessage = 'All Meter Reading Test Data removed'; 
         console.log('Meter readings deleted successfully');
 
