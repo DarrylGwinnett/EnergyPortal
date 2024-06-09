@@ -2,6 +2,9 @@
   "name": "energyportalui",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -9,7 +12,6 @@
   },
   "dependencies": {
     "@canopassoftware/vue-file-upload": "^1.0.8",
-    "@fortawesome/fontawesome-free": "^6.5.2",
     "axios": "^1.7.2",
     "core-js": "^3.8.3",
     "vue": "^3.2.13"
