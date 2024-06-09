@@ -1,47 +1,54 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div class="app-container">
+    <SiteHeader />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+    <div class="main-container">
+      <SideBar />
+
+      <!-- Main content area -->
+      <div class="main-content">
+        <div class="section">
+          <div class="container">
+            <SimpleUpload />
+            <DeleteMeterReadings />
+          </div>
+        </div>
+      </div>
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<script>
+import SimpleUpload from "./components/SimpleUpload.vue";
+import SiteHeader from "./components/SiteHeader.vue";
+import SideBar from "./components/SideBar.vue"; 
+import DeleteMeterReadings from "./components/DeleteMeterReadings.vue"; 
+
+export default {
+  name: "App",
+  components: {
+    SimpleUpload,
+    SiteHeader,
+    SideBar,
+    DeleteMeterReadings
+  },
+};
+</script>
+
+<style>
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.main-container {
+  display: flex;
+  flex: 1; 
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.main-content {
+  flex: 1; 
 }
+
 </style>
