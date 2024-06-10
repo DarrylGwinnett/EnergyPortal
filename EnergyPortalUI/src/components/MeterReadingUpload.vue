@@ -1,6 +1,6 @@
 <template>
   <div class="field">
-    <div class="file is-boxed is-primary has-name" style="display: flex; justify-content: center;">
+    <div class="file is-boxed is-primary has-name centered">
       <label class="file-label">
         <input class="file-input" type="file" @change="uploadFile">
         <span class="file-cta">
@@ -16,7 +16,7 @@
         </span>
       </label>
     </div>
-    <div class="field mt-4" style="display: flex; justify-content: center;">
+    <div class="field mt-4 centered">
       <button class="button is-primary" @click="submitFile" :disabled="isLoading">
         <span v-if="!isLoading">Submit</span>
         <span v-else class="icon is-small">
@@ -24,15 +24,22 @@
         </span>
       </button>
     </div>
-    <div v-if="successMessage" class="notification is-success mt-4">
-      <div>{{ successMessage }}</div>
-      <div>Successfully processed readings: {{ successCount }}</div>
-      <div>Failed readings: {{ failedCount }} <span class="details-link" @click="showFailedDetails">Click for details</span></div>
+    <div v-if="successMessage" class="notification is-success mt-4 centered">
+      <div class="success-details">
+        <div>{{ successMessage }}</div>
+        <div>Successfully processed readings: {{ successCount }}</div>
+        <div>Failed readings: {{ failedCount }} <i class="fas fa-info-circle" @click="showFailedDetails"></i></div>
+      </div>
+    </div>
+    <div v-if="errorMessage" class="notification is-danger mt-4 centered">
+      <div class="fail-details">
+        <div>{{ errorMessage }}</div>
+      </div>
     </div>
     <div v-if="showFailedDetailsBanner" class="notification is-info mt-4">
       <p class="title is-5">Failed Meter Reading Details</p>
-      <div>Parsed reading failues: {{ parsedFailures }}</div>
-      <div>Validation Failures: {{ validationFailures }} </div>
+      <div>Parsed reading failures: {{ parsedFailures }}</div>
+      <div>Validation failures: {{ validationFailures }}</div>
     </div>
   </div>
 </template>
@@ -48,6 +55,7 @@ const successCount = ref(0);
 const failedCount = ref(0);
 const parsedFailures = ref(0);
 const validationFailures = ref(0);
+const errorMessage = ref(''); // Add this line
 
 const showFailedDetailsBanner = ref(false);
 
@@ -55,32 +63,34 @@ const fileName = computed(() => file.value?.name);
 
 const uploadFile = (event) => {
   file.value = event.target.files[0];
+  resetMessages();
+};
+
+const resetMessages = () => {
   successMessage.value = '';
   successCount.value = 0;
   failedCount.value = 0;
+  parsedFailures.value = 0;
+  validationFailures.value = 0;
   showFailedDetailsBanner.value = false;
-  console.log('File selected:', file.value);
+  errorMessage.value = ''; // Add this line
 };
 
 const submitFile = async () => {
-  console.log('Submitting file:', file);
   if (!file.value) return;
 
   const formData = new FormData();
   formData.append('meterReadingFile', file.value);
 
   isLoading.value = true;
-  successMessage.value = '';
-  successCount.value = 0;
-  failedCount.value = 0;
+  resetMessages();
 
   try {
-    let response = await axios.post(process.env.VUE_APP_BASEURL + '/api/meter-reading-uploads', formData, {
+    const response = await axios.post(`${process.env.VUE_APP_BASEURL}/api/meter-reading-uploads`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     });
-    console.log('Response:', response);
     successMessage.value = 'Meter reading file processed successfully';
     successCount.value = response.data.successfulReadingsCount;
     failedCount.value = response.data.failedReadingsCount;
@@ -88,6 +98,7 @@ const submitFile = async () => {
     validationFailures.value = response.data.validationFailures.length;
   } catch (error) {
     console.error('Error:', error);
+    errorMessage.value = error.response?.data ?? error.message;
   } finally {
     isLoading.value = false;
   }
@@ -99,13 +110,18 @@ const showFailedDetails = () => {
 </script>
 
 <style scoped>
+.centered {
+  display: flex;
+  justify-content: center;
+}
+
 .file.has-name .file-label .file-name {
   display: inline-block;
   margin-left: 1rem;
   font-weight: bold;
 }
 
-.field.mt-4 {
+.mt-4 {
   margin-top: 1rem;
 }
 
@@ -146,5 +162,9 @@ const showFailedDetails = () => {
 
 .details-link:hover {
   color: darkblue;
+}
+
+.success-details > div, .fail-details > div {
+  margin-bottom: 0.5rem;
 }
 </style>

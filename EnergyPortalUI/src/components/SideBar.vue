@@ -1,9 +1,12 @@
 <template>
-  <aside class="sidebar">
+  <aside :class="['sidebar', { collapsed: isCollapsed }]">
     <div class="sidebar-header">
       <h2>Sidebar</h2>
+      <button class="collapse-button" @click="toggleCollapse">
+        <i :class="[isCollapsed ? 'fas fa-chevron-right' : 'fas fa-chevron-left']"></i>
+      </button>
     </div>
-    <div class="sidebar-content">
+    <div class="sidebar-content" v-show="!isCollapsed">
       <ul>
         <li v-for="page in pages" :key="page.id">
           <router-link :to="page.route">{{ page.name }}</router-link>
@@ -18,29 +21,41 @@ export default {
   name: 'SideBar',
   data() {
     return {
+      isCollapsed: false,
       pages: [
         { id: 1, name: 'Home', route: '/' },
-        { id: 2, name: 'About', route: '/about' },
-        { id: 3, name: 'Contact', route: '/contact' }
+        // Add more pages as needed
       ]
     };
+  },
+  methods: {
+    toggleCollapse() {
+      this.isCollapsed = !this.isCollapsed;
+    }
   }
 };
 </script>
 
 <style scoped>
 .sidebar {
-  width: 20%; 
+  width: 20%;
   height: 100vh;
   background-color: #f4f4f4;
-  overflow-y: auto; 
+  overflow-y: auto;
+  transition: width 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: 3%;
 }
 
 .sidebar-header {
   background-color: #333;
   color: #fff;
   padding: 1rem;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .sidebar-content {
@@ -63,5 +78,17 @@ router-link {
 
 router-link.active {
   font-weight: bold;
+}
+
+.collapse-button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.collapse-button .fas {
+  transition: transform 0.3s ease;
 }
 </style>
