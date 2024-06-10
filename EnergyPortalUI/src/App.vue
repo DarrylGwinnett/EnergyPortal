@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import SimpleUpload from "./components/SimpleUpload.vue";
+import SimpleUpload from "./components/MeterReadingUpload.vue";
 import SiteHeader from "./components/SiteHeader.vue";
 import SideBar from "./components/SideBar.vue"; 
 import DeleteMeterReadings from "./components/DeleteMeterReadings.vue"; 
