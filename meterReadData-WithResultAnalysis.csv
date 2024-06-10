@@ -1,0 +1,36 @@
+AccountId,MeterReadingDateTime,MeterReadValue,,Status,Explanation
+1234,12/05/2019 09:24,9787,,Accepted,
+1235,13/05/2019 09:24,,,Rejected,Invalid read value
+1236,10/04/2019 19:34,8898,,Rejected,Account not in seed data
+1237,15/05/2019 09:24,3455,,Rejected,Account not in seed data
+1238,16/05/2019 09:24,0,,Rejected,Account not in seed data
+1239,17/05/2019 09:24,45345,,Accepted,
+1240,18/05/2019 09:24,978,,Accepted,
+1241,11/04/2019 09:24,436,,Accepted,
+1242,20/05/2019 09:24,124,,Accepted,
+1243,21/05/2019 09:24,77,,Accepted,
+1244,25/05/2019 09:24,3478,,Accepted,
+1245,25/05/2019 14:26,676,,Accepted,
+1246,25/05/2019 09:24,3455,,Accepted,
+1247,25/05/2019 09:24,3,,Accepted,
+1248,26/05/2019 09:24,3467,,Accepted,
+2233,22/04/2019 12:25,323,,Accepted,
+2344,22/04/2019 09:24,1002,,Accepted,
+2344,22/04/2019 12:25,1002,,Accepted,
+2344,08/05/2019 09:24,0X765,,Rejected,Invalid read value
+2345,22/04/2019 12:25,45522,,Accepted,
+2346,22/04/2019 12:25,999999,,Rejected,Read too high
+2347,22/04/2019 12:25,54,,Accepted,
+2348,22/04/2019 12:25,123,,Accepted,
+2349,22/04/2019 12:25,VOID,,Rejected,Invalid read value
+2350,22/04/2019 12:25,5684,,Accepted,
+2351,22/04/2019 12:25,57579,,Accepted,
+2352,22/04/2019 12:25,455,,Accepted,
+2353,22/04/2019 12:25,1212,X,Accepted,
+2354,22/04/2019 12:25,889,,Rejected,Account not in seed data
+2355,06/05/2019 09:24,1,,Accepted,
+2356,07/05/2019 09:24,0,,Accepted,
+4534,11/05/2019 09:24,,,Rejected,No Read Value
+6776,09/05/2019 09:24,-6575,,Rejected,Duplicate read time
+6776,10/05/2019 09:24,23566,,Rejected,Duplicate read time
+8766,22/04/2019 12:25,3440,,Accepted,
